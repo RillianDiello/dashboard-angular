@@ -23,17 +23,15 @@ export class DadosService {
 	 *
 	 * @return Observable<any>
 	 */
+	/**
+	 * Retorna um observable contendo os dados a serem
+	 * exibidos no gráfico.
+	 *
+	 * @return Observable<any>
+	 */
 	obterDados(): Observable<any> {
 		return new Observable(observable => {
-      /*
-      Um observable está sempre escutando, e o comando next é utilizado para
-      notificar todos os inscritos no observable.
-      */
-      observable.next(this.dados);
-      /*
-      Quando um observable termina suas notificações ele envia uma notificação
-      informando os inscritos que ele terminou e irá parar de escutar
-      */
+			observable.next(this.dados);
 			observable.complete();
 		});
 	}
