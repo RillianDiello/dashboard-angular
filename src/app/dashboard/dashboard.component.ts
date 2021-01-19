@@ -58,11 +58,11 @@ export class DashboardComponent implements OnInit {
   */
    exibirGraficos(): void {
     this.exibirPieChart();
-    // this.exibir3dPieChart();
-    // this.exibirBarChart();
-    // this.exibirLineChart();
-    // this.exibirColumnChart();
-    // this.exibirDonutChart();
+    this.exibir3dPieChart();
+    this.exibirBarChart();
+    this.exibirLineChart();
+    this.exibirColumnChart();
+    this.exibirDonutChart();
   }
 
   /**
@@ -80,7 +80,55 @@ export class DashboardComponent implements OnInit {
     chart.draw(this.obterDataTable(), this.obterOpcoes());
   }
 
+  /**
+   * Exibe o gráfico Pie Chart em 3D.
+   *
+   * @return void
+   */
+  exibir3dPieChart(): void {
+  	const el = document.getElementById('3d_pie_chart');
+  	const chart = new google.visualization.PieChart(el);
+	  const opcoes = this.obterOpcoes();
 
+    opcoes['is3D'] = true;
+    chart.draw(this.obterDataTable(), opcoes);
+  }
+
+   /**
+   * Exibe o gráfico Bar Chart.
+   *
+   * @return void
+   */
+  exibirBarChart(): void {
+  	const el = document.getElementById('bar_chart');
+    const chart = new google.visualization.BarChart(el);
+
+    chart.draw(this.obterDataTable(), this.obterOpcoes());
+  }
+
+  /**
+   * Exibe o gráfico Line Chart.
+   *
+   * @return void
+   */
+  exibirLineChart(): void {
+  	const el = document.getElementById('line_chart');
+    const chart = new google.visualization.LineChart(el);
+
+    chart.draw(this.obterDataTable(), this.obterOpcoes());
+  }
+
+  /**
+   * Exibe o gráfico Column Chart.
+   *
+   * @return void
+   */
+  exibirColumnChart(): void {
+  	const el = document.getElementById('column_chart');
+    const chart = new google.visualization.ColumnChart(el);
+
+    chart.draw(this.obterDataTable(), this.obterOpcoes());
+  }
 
   /**
    * Cria e retorna o objeto DataTable da API de gráficos,
@@ -96,6 +144,20 @@ export class DashboardComponent implements OnInit {
     data.addRows(this.dados);
 
     return data;
+  }
+
+  /**
+   * Exibe o gráfico Donut Chart.
+   *
+   * @return void
+   */
+  exibirDonutChart(): void {
+  	const el = document.getElementById('donut_chart');
+  	const chart = new google.visualization.PieChart(el);
+    const opcoes = this.obterOpcoes();
+
+    opcoes['pieHole'] = 0.4;
+    chart.draw(this.obterDataTable(), opcoes);
   }
 
   /**
