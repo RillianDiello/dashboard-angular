@@ -36,3 +36,5 @@ The following graphics were implemented:
 * Lines;
 * Columns;
 * Donut
+
+![image](https://user-images.githubusercontent.com/6064077/104981295-bccb8b80-59de-11eb-89ea-1a98f364388a.png)
